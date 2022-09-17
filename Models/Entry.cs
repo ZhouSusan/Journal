@@ -27,6 +27,6 @@ namespace Journal.Models
         public DateTime CreatedAt {get; set;}
         public DateTime UpdatedAt {get; set;}
 
-        public UserId {get; set;}
+        public int UserId {get; set;}
     }
 }
