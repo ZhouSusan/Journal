@@ -32,6 +32,24 @@ namespace Journal.Controllers
             return View("Index");
         }
 
+        [HttpPost("/register")]
+        public IActionResult Register(User newUser)
+        {
+            if (ModelState.IsValid) 
+            {
+                if (ModelState.IsValid == false) {
+                    return View("Index");
+                }
+                PasswordHasher<User> Hasher =  new PasswordHasher<User>();
+                newUser.Password = Hasher.HashPassword(newUser, newUser.Password);
+                db.Add(newUser);
+                db.SaveChanges();
+                HttpContext.Session.SetInt32("UserId", newUser.UserId);
+                return RedirectToAction("All", "Entry");
+            }
+
+            return View("Index");
+        }
 
         public IActionResult Privacy()
         {
