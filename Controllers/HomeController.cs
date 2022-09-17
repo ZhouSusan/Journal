@@ -51,6 +51,31 @@ namespace Journal.Controllers
             return View("Index");
         }
 
+        [HttpPost("/login")]
+        public IActionResult Login(LoginUser loginUser)
+        {
+            if (ModelState.IsValid)
+            {
+                User userindb = db.Users.FirstOrDefault(u => u.Email == loginUser.LoginEmail);
+                if (userindb == null)
+                {
+                    ModelState.AddModelError("LoginEmail", "Invalid login attempt");
+                    return View("Index");
+                }
+                PasswordHasher<LoginUser> Hasher = new PasswordHasher<LoginUser>();
+                PasswordVerificationResult result = Hasher.VerifyHashedPassword(loginUser, userindb.Password, loginUser.LoginPassword); 
+                if (result == 0)
+                {
+                    ModelState.AddModelError("LoginEmail", "Invalid login attempt");
+                    return View("Index");
+                }
+
+                HttpContext.Session.SetInt32("UserId", userindb.UserId);
+                return RedirectToAction("All", "Entry");
+            }
+            return View("Index");
+        }
+
         public IActionResult Privacy()
         {
             return View();
