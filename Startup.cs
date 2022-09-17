@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Journal.Models;
 
 namespace Journal
 {
@@ -22,6 +24,14 @@ namespace Journal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<JournalContext>(dbCtxOptions =>
+        {
+            dbCtxOptions.UseMySql(Configuration["DBInfo:ConnectionString"], mySqlOptions => mySqlOptions.EnableRetryOnFailure());
+        });
+            services.AddHttpContextAccessor();
+            services.AddSession();
+            services.AddDbContext<JournalContext>(options => options.UseMySql (Configuration["DBInfo:ConnectionString"]));
+            services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddControllersWithViews();
         }
 
@@ -42,11 +52,13 @@ namespace Journal
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            app.UseSession();
+
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
