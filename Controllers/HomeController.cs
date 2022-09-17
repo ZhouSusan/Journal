@@ -14,7 +14,7 @@ namespace Journal.Controllers
         private readonly ILogger<HomeController> _logger;
         private JournalContext db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, JournalContext context)
         {
             _logger = logger;
             db = context;
