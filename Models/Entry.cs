@@ -19,8 +19,7 @@ namespace Journal.Models
         [Display(Name="Description")]
         public string Description {get; set;}
 
-        [Required(ErrorMessage="is required.")]
-        [Display(DataType.Date)]
+        [DataType(DataType.Date)]
         [FutureDate]
         public DateTime? Date {get; set;}
 
