@@ -1,3 +1,11 @@
+obj
+bin
+Migrations
+Properties
+/appsettings.json
+/appsettings.Development.json
+/Journal.csproj
+
 # Logs
 logs
 *.log
