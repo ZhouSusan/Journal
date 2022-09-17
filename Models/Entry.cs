@@ -11,12 +11,12 @@ namespace Journal.Models
 
         [Required(ErrorMessage="is required.")]
         [MinLength(2, ErrorMessage="must be at least 2 characters")]
-        [Display(name="Title")]
+        [Display(Name="Title")]
         public string Title {get; set;}
 
         [Required(ErrorMessage="is required.")]
         [MinLength(10, ErrorMessage="must be at least 10 characters")]
-        [Display(name="Description")]
+        [Display(Name="Description")]
         public string Description {get; set;}
 
         [Required(ErrorMessage="is required.")]

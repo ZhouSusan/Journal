@@ -7,12 +7,12 @@ namespace Journal.Models
     public class LoginUser
     {
     [NotMapped]
-    [Display(name="Email")]
+    [Display(Name="Email")]
     [Required(ErrorMessage="is required.")]
     [EmailAddress]
     public string LoginEmail {get; set;}
 
-    [Display(name="Password")]
+    [Display(Name="Password")]
     [Required(ErrorMessage="is required.")]
     [DataType(DataType.Password)]
     [MinLength(8, ErrorMessage="Must be 8 characters or longer!")]
