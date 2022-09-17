@@ -12,16 +12,20 @@ namespace Journal.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private JournalContext db;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            db = context;
         }
 
+        [HttpGet("")]
         public IActionResult Index()
         {
-            return View();
+            return View("Index");
         }
+
 
         public IActionResult Privacy()
         {
