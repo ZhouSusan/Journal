@@ -23,6 +23,7 @@ namespace Journal.Models
 
         [Required(ErrorMessage="is required.")]
         [EmailAddress]
+        [UniqueEmail]
         [Display(Name="Email")]
         public string Email {get; set;}
 
