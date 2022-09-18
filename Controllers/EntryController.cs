@@ -22,7 +22,13 @@ namespace Journal.Controllers
             }
         }
 
-        
+        private bool loggedIn 
+        {
+            get{
+                return uid != null;
+            }
+        }
+
         private JournalContext db;
         public EntryController( JournalContext context)
         {
