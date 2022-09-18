@@ -1,0 +1,13 @@
+@model Entry
+
+<div class="container w-75 mx-auto">
+    <h2 class="text-center">@Model.Title</h2>
+
+    <p class="mt-2">
+        @if (Model.Date != null)
+        {
+        <span>@Model.Date.Value.ToString("MM/dd/yyyy") - </span>
+        }
+        @Model.Description
+    </p>
+</div>  

@@ -46,7 +46,6 @@ namespace Journal.Controllers
             ViewBag.CurrentUser = db.Users.
                                 FirstOrDefault(u => u.UserId == userId);
             List <Entry> AllEntries = db.Entries
-                                .Include(c => c.CreatedAt)
                                 .Where(p => p.UserId == userId).ToList();
             return View("All", AllEntries);
         }
@@ -61,5 +60,20 @@ namespace Journal.Controllers
 
             return View("New");
         }
+
+        [HttpPost("/entries/create")]
+        public IActionResult Create(Entry newEntry)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return View("New");
+            }
+
+            newEntry.UserId = (int)uid;
+            db.Entries.Add(newEntry);
+            db.SaveChanges();
+            return RedirectToAction("Details", new { entryId = newEntry.EntryId });
+        }
+
     }
 }
