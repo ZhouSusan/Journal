@@ -24,7 +24,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Entry" asp-action="New">New
+                                Entry</a>
+                        </li>
                         @if (Context.Session.GetInt32("UserId") != null) 
                         {
                             <li class=:nav-item>

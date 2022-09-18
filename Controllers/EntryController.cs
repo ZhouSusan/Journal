@@ -50,5 +50,16 @@ namespace Journal.Controllers
                                 .Where(p => p.UserId == userId).ToList();
             return View("All", AllEntries);
         }
+
+        [HttpGet("/entries/new")]
+        public IActionResult New()
+        {
+            if (!loggedIn)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View("New");
+        }
     }
 }
