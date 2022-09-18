@@ -94,5 +94,17 @@ namespace Journal.Controllers
             return RedirectToAction("Details", new { entryId = newEntry.EntryId });
         }
 
+        [HttpPost("/entries/{entryId}/delete")]
+        public IActionResult Delete(int entryId)
+        {
+            Entry entry = db.Entries.FirstOrDefault(e => e.EntryId == entryId);
+
+            if (entry != null && uid == entry.UserId)
+            {
+                db.Entries.Remove(entry);
+                db.SaveChanges();
+            }
+            return RedirectToAction("All");
+        }
     }
 }

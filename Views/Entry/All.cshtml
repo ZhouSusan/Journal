@@ -16,13 +16,13 @@
                     <td><a asp-controller="Entry" asp-action="Details" asp-route-entryId="@e.EntryId">@e.Title</a></td>
                     <td>@e.Date</td>
                     <td class="d-flex">
-                        <form asp-action="Edit" asp-controller="Entry" asp-route-weddingId="@e.EntryId">
+                        <form asp-action="Edit" asp-controller="Entry" asp-route-entryId="@e.EntryId">
                             <button class="btn btn-outline-success">Edit</button>
                         </form>
-                        <form asp-action="Delete" asp-controller="Entry" asp-route-weddingId="@e.EntryId">
+                        <form asp-action="Delete" asp-controller="Entry" asp-route-entryId="@e.EntryId">
                             <button class="btn btn-outline-danger">Delete</button>
                         </form>
-                        <form asp-action="Details" asp-controller="Entry" asp-route-weddingId="@e.EntryId">
+                        <form asp-action="Details" asp-controller="Entry" asp-route-entryId="@e.EntryId">
                             <button class="btn btn-outline-danger">View</button>
                         </form>
                     </td>
