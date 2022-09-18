@@ -26,9 +26,9 @@ namespace Journal.Controllers
         [HttpGet("")]
         public IActionResult Index()
         {
-            // if (HttpContext.Session.GetInt32("UserId") != null) {
-            //     return RedirectToAction("Home");
-            // }
+            if (HttpContext.Session.GetInt32("UserId") != null) {
+                return RedirectToAction("All", "Entry");
+            }
             return View("Index");
         }
 

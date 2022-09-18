@@ -14,6 +14,15 @@ namespace Journal.Controllers
 {
     public class EntryController : Controller
     {
+        private int? uid
+        {
+            get
+            {
+                return HttpContext.Session.GetInt32("UserId");
+            }
+        }
+
+        
         private JournalContext db;
         public EntryController( JournalContext context)
         {
