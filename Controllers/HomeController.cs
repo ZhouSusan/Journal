@@ -76,6 +76,13 @@ namespace Journal.Controllers
             return View("Index");
         }
 
+        [HttpPost("/logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Privacy()
         {
             return View();
