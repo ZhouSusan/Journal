@@ -50,6 +50,25 @@ namespace Journal.Controllers
             return View("All", AllEntries);
         }
 
+    [HttpGet("/entries/{entryId}")]
+        public IActionResult Details(int entryId)
+        {
+            if (!loggedIn)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            Entry entry = db.Entries
+                .FirstOrDefault(e => e.EntryId == entryId);
+
+            if (entry == null)
+            {
+                return RedirectToAction("All");
+            }
+
+            return View("Detail", entry);
+        }
+
         [HttpGet("/entries/new")]
         public IActionResult New()
         {
