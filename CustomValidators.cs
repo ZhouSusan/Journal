@@ -9,15 +9,15 @@ namespace Journal
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            // Because our Date field is optional, can't convert null to date.
             if (value == null)
             {
                 return ValidationResult.Success;
             }
 
             DateTime date = (DateTime)value;
+            Console.WriteLine(date);
 
-            if (date <= DateTime.Now)
+            if (date < DateTime.Today)
             {
                 return new ValidationResult("must be in the future.");
             }
