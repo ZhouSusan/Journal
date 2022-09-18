@@ -38,7 +38,17 @@ namespace Journal.Controllers
         [HttpGet("/entries/all")]
         public IActionResult All()
         {
-            return View("All");
+            if (!loggedIn)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            int ? userId = HttpContext.Session.GetInt32("UserId");
+            ViewBag.CurrentUser = db.Users.
+                                FirstOrDefault(u => u.UserId == userId);
+            List <Entry> AllEntries = db.Entries
+                                .Include(c => c.CreatedAt)
+                                .Where(p => p.UserId == userId).ToList();
+            return View("All", AllEntries);
         }
     }
 }
