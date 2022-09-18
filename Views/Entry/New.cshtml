@@ -1,0 +1,31 @@
+@model Entry
+
+<div class="container w-75 mx-auto">
+    <h2 class="text-center">New Entry</h2>
+
+    <form class="shadow p-3 rounded" asp-controller="Entry" asp-action="Create" method="POST">
+
+        <div class="form-group">
+        <label asp-for="Title"></label>
+        <span asp-validation-for="Title" class="text-danger">
+        </span>
+        <input class="form-control" asp-for="Title">
+        </div>
+
+        <div class="form-group">
+        <label asp-for="Description"></label>
+        <span asp-validation-for="Description" class="text-danger">
+        </span>
+        <textarea class="form-control" asp-for="Description"></textarea>
+        </div>
+
+        <div class="form-group">
+        <label asp-for="Date"></label>
+        <span asp-validation-for="Date" class="text-danger">
+        </span>
+        <input class="form-control" asp-for="Date">
+        </div>
+
+        <button class="btn btn-sm btn-outline-success">Create</button>
+    </form>
+</div>
