@@ -72,6 +72,7 @@ namespace Journal.Controllers
         [HttpGet("/entries/new")]
         public IActionResult New()
         {
+            Console.WriteLine("New");
             if (!loggedIn)
             {
                 return RedirectToAction("Index", "Home");
@@ -83,6 +84,7 @@ namespace Journal.Controllers
         [HttpPost("/entries/create")]
         public IActionResult Create(Entry newEntry)
         {
+            Console.WriteLine("Create");
             if (ModelState.IsValid == false)
             {
                 return View("New");
@@ -105,6 +107,24 @@ namespace Journal.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("All");
+        }
+
+        [HttpPost("/entries/edit/{entryId}")]
+        public IActionResult Edit(int entryId, string Title, string Description) 
+        {
+            Entry entry = db.Entries.Where(e => e.EntryId == entryId).FirstOrDefault();
+            entry.Title = Title;
+            entry.Description = Description;
+            db.SaveChanges();
+            return RedirectToAction("All");
+        }
+
+        [HttpPost("/entries/{entryId}/update")]
+        public IActionResult Update(int entryId)
+        {
+            Console.WriteLine(entryId);
+            Entry entry = db.Entries.Where(e => e.EntryId == entryId).FirstOrDefault();
+            return View("Edit", entry ); 
         }
     }
 }
