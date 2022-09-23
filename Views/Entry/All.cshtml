@@ -22,9 +22,9 @@
                         <form asp-action="Delete" asp-controller="Entry" asp-route-entryId="@e.EntryId">
                             <button class="btn btn-outline-danger">Delete</button>
                         </form>
-                        <form asp-action="Details" asp-controller="Entry" asp-route-entryId="@e.EntryId">
+                        <a asp-controller="Entry" asp-action="Details" asp-route-entryId="@e.EntryId">
                             <button class="btn btn-outline-danger">View</button>
-                        </form>
+                        </a>
                     </td>
                 </tr>
             }
