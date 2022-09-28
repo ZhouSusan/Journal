@@ -26,6 +26,8 @@ Journal is an online application where users can safely create, edit, and view p
 
 ## Demo
 <hr/>
+<img alt="gif_video" src"https://media.giphy.com/media/MId9AztoffQwuLvNrK/giphy.gif" width="500px" height="400px"/>
+<hr/>
 <img alt="Desktop login registration image" src="./imagesReadme/Capture.PNG/" width="500px" height="400px"/>
 <img alt="Mobile login registration image" src="./imagesReadme/register_mobile.PNG" height="300px" width="200px"/>
 
