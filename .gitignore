@@ -5,6 +5,8 @@ Properties
 /appsettings.json
 /appsettings.Development.json
 /Journal.csproj
+.vscode 
+Startup.cs
 
 # Logs
 logs
